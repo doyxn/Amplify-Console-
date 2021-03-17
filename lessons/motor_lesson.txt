@@ -1,0 +1,45 @@
+introduction page
+    -Welcome to FRCCademy(name work in progress)!
+    -Within this lesson you will learn how to program a basic differential
+    drive drivetrain with encoders in java.
+    -We also assume the student has a basic understanding of the Java programming language.
+    -Differential Drive drivetrains  are capable of driving
+        forward/backward and can turn by driving the two sides in opposite directions.
+
+Part 1
+    -This lesson will teach you how to instantiate a motor controller object!
+    -A motor controller does exactly what it's name suggests — it controls a motor, specifically it's inputed voltage
+
+    -In this example we will create a ~Talon~ motor controller object with the 
+    Code snippet:
+        Talon m_frontLeft = new Talon(1); -->
+         Here we instatiated a Talon motor controller object called m_frontLeft that is connected to the 2nd port on the PDP
+
+        --> Task: Create 2 leftside Talon motor controllers that are plugged into port 1 and 2 on the PDP
+        Talon m_rearLeft = new Talon(2);
+
+Part 2
+    -Now that we have our left side motors, we have to create a Speed controller group to contain them
+    -A speed Controller Group will allow our speed controllers to maintain the same voltage
+            This step is CRUCIAL: Without speed controllers drivers will not have optimal control of the robot :(
+    Code snippet:
+        Talon m_frontLeft = new Talon(1);
+        Talon m_rearLeft = new Talon(2);
+        SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+
+  
+Part 3
+    -Now that we know how to instantiate a motor, lets create a 4 wheel drive train.
+    Talon m_frontLeft = new Talon(1);
+   Talon m_rearLeft = new Talon(2);
+   SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+
+   Talon m_frontRight = new Talon(3);
+   Talon m_rearRight = new Talon(4);
+   SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+
+    -Uh Oh, we have a new interface what does it do?
+   DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+   -The `DifferentialDrive` interface creates a drive base of the left and right motor controller groups
+   -This provides an extra layer of "abstraction" (for this keyword learners can hover over the word to see its definition)
+        Extra layers of abstraction allows us to have more simplified code!
