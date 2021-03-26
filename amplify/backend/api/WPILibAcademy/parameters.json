@@ -1,0 +1,5 @@
+{
+  "AppSyncApiName": "WPILibAcademy",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false
+}
